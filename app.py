@@ -1,5 +1,6 @@
-import pnadas as pd 
-import streamplit as st 
+import pandas as pd 
+import streamlit as st 
+import numpy as np
 from prediction import predict
 
 st.title("Air Quality Prediction")
@@ -12,19 +13,19 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.text("Dew Point")
-    dew = st.slider('Dew Point',30,10,0,-5,-15,-20)
-    st.test('Temperature')
-    temp = st.slider('Temperature',45,30,15,0,-10,-19)
+    dew = st.slider('Dew Point',30,20)
+    st.text('Temperature')
+    temp = st.slider('Temperature',45,-19)
     
 with col2:
     st.text("Pressure")
-    pres = st.slider('Pressure',1046,1005,1030,991,1015,1000)
+    pres = st.slider('Pressure',1046,1000)
     st.text('Iws')
-    iws = st.slider('Iws',565,465,345,254,15,0.15)
+    iws = st.slider('Iws',565,int(0.15))
     
 st.text('')
 if st.button("Predict level of Pm2.5"):
-    result = predict(np.array([[dew,temp,pres,iws]]))
-    st.test(result[0])
+    result = 'amount of pm2.5 is ' + predict(np.array([[dew,temp,pres,iws]]))
+    st.text(result[0])
 
 st.text
