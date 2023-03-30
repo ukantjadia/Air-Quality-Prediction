@@ -27,5 +27,3 @@ st.text('')
 if st.button("Predict level of Pm2.5"):
     result = 'amount of pm2.5 is ' + predict(np.array([[dew,temp,pres,iws]]))
     st.text(result[0])
-
-st.text
